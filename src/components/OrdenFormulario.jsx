@@ -1,99 +1,68 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const OrdenFormulario = () => {
-  const [nombre_usuario, setNombreUsuario] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [ext, setExt] = useState(""); // <-- NUEVO
-  const [email, setEmail] = useState("");
-  const [oficina, setOficina] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+function OrdenFormulario() {
+  const [formData, setFormData] = useState({
+    nombre_usuario: '',
+    telefono: '',
+    extension: '',
+    email: '',
+    oficina: '',
+    descripcion: ''
+  });
+
+  const [mensaje, setMensaje] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const datos = {
-      nombre_usuario,
-      telefono,
-      ext, // <-- NUEVO
-      email,
-      oficina,
-      descripcion,
-    };
-
     try {
-      const response = await fetch("https://ordenes-backend.onrender.com/api/ordenes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(datos),
+      const res = await fetch('https://ordenes-backend.onrender.com/api/ordenes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
 
-      const result = await response.json();
-
-      if (response.status === 201) {
-        alert("Orden enviada con éxito");
+      if (res.ok) {
+        setMensaje('✅ Orden registrada con éxito');
+        setFormData({
+          nombre_usuario: '',
+          telefono: '',
+          extension: '',
+          email: '',
+          oficina: '',
+          descripcion: ''
+        });
       } else {
-        alert("Error: " + result.error);
+        setMensaje('❌ Error al registrar la orden');
       }
-    } catch (error) {
-      alert("Error de conexión con el servidor");
-      console.error("Error:", error);
+    } catch (err) {
+      setMensaje('❌ Error de conexión con el servidor');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Crear Orden de Trabajo</h2>
-
-      <input
-        type="text"
-        placeholder="Nombre del Usuario"
-        value={nombre_usuario}
-        onChange={(e) => setNombreUsuario(e.target.value)}
-        required
-      />
-
-      <input
-        type="text"
-        placeholder="Teléfono"
-        value={telefono}
-        onChange={(e) => setTelefono(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="Ext." // <-- NUEVO
-        value={ext}
-        onChange={(e) => setExt(e.target.value)}
-      />
-
-      <input
-        type="email"
-        placeholder="Correo electrónico"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-
-      <input
-        type="text"
-        placeholder="Oficina"
-        value={oficina}
-        onChange={(e) => setOficina(e.target.value)}
-        required
-      />
-
-      <textarea
-        placeholder="Descripción del problema"
-        value={descripcion}
-        onChange={(e) => setDescripcion(e.target.value)}
-        required
-      />
-
-      <button type="submit">Enviar Orden</button>
-    </form>
+    <div className="bg-black text-green-400 p-8 rounded-xl shadow-lg w-full max-w-lg mx-auto font-mono border border-green-600">
+      <div className="flex justify-center mb-4">
+        <img src="/logo.png" alt="Logo de la empresa" className="h-20" />
+      </div>
+      <h2 className="text-2xl font-bold text-center mb-6">🛠️ Solicitud de Orden de Trabajo</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input name="nombre_usuario" placeholder="Nombre" value={formData.nombre_usuario} onChange={handleChange} required className="w-full p-3 bg-black border border-green-500 text-green-400 rounded" />
+        <input name="telefono" placeholder="Teléfono" value={formData.telefono} onChange={handleChange} required className="w-full p-3 bg-black border border-green-500 text-green-400 rounded" />
+        <input name="extension" placeholder="Ext. (opcional)" value={formData.extension} onChange={handleChange} className="w-full p-3 bg-black border border-green-500 text-green-400 rounded" />
+        <input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} required className="w-full p-3 bg-black border border-green-500 text-green-400 rounded" />
+        <input name="oficina" placeholder="Oficina" value={formData.oficina} onChange={handleChange} required className="w-full p-3 bg-black border border-green-500 text-green-400 rounded" />
+        <textarea name="descripcion" placeholder="Descripción del problema" value={formData.descripcion} onChange={handleChange} required className="w-full p-3 bg-black border border-green-500 text-green-400 rounded" />
+        <button type="submit" className="w-full bg-green-600 hover:bg-green-500 text-black font-bold py-3 px-4 rounded">
+          📨 Enviar Orden
+        </button>
+      </form>
+      {mensaje && <p className="mt-4 text-center">{mensaje}</p>}
+    </div>
   );
-};
+}
 
 export default OrdenFormulario;
