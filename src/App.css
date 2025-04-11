@@ -1,46 +1,50 @@
+/* App.css */
+
 body {
-  background-color: #000;
-  color: #00ff00;
-  font-family: 'Courier New', Courier, monospace;
   margin: 0;
   padding: 0;
+  background-color: #000000;
+  color: #00ff41;
+  font-family: 'Courier New', Courier, monospace;
+  background-image: radial-gradient(ellipse at center, #001100 0%, #000000 70%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.App {
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
-h1 {
-  text-align: center;
-  color: #00ff00;
-  padding: 20px;
-}
-
-form {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #00ff00;
+/* Input y textareas */
+input,
+textarea {
+  background-color: #000;
+  color: #00ff41;
+  border: 1px solid #00ff41;
+  padding: 0.75rem;
   border-radius: 8px;
-  background-color: #111;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  background: #000;
-  color: #00ff00;
-  border: 1px solid #00ff00;
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px #00ff41;
 }
 
+/* Botón */
 button {
-  background-color: #00ff00;
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+  background-color: #00ff41;
+  color: #000;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0f0;
-  color: #000;
+  background-color: #00cc33;
 }
