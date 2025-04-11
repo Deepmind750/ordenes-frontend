@@ -48,7 +48,12 @@ function OrdenFormulario() {
       <div className="flex justify-center mb-4">
         <img src="/logo.png" alt="Logo de la empresa" className="h-20" />
       </div>
-      <h2 className="text-2xl font-bold text-center mb-6">🛠️ Solicitud de Orden de Trabajo</h2>
+      <h2 className="text-2xl font-bold text-center mb-1 whitespace-nowrap">
+        🛠️ Solicitud de Orden de Trabajo
+      </h2>
+      <p className="text-center text-green-300 mb-6">
+        Oficina de Sistema de Información
+      </p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input name="nombre_usuario" placeholder="Nombre" value={formData.nombre_usuario} onChange={handleChange} required className="w-full p-3 bg-black border border-green-500 text-green-400 rounded" />
         <input name="telefono" placeholder="Teléfono" value={formData.telefono} onChange={handleChange} required className="w-full p-3 bg-black border border-green-500 text-green-400 rounded" />
