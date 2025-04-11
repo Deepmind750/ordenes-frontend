@@ -1,0 +1,112 @@
+.tramite-container {
+  padding: 2rem;
+  max-width: 700px;
+  margin: auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 12px;
+}
+
+.tramite-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* <-- centrado */
+  gap: 1rem;
+  text-align: center;
+}
+
+.tramite-header h2,
+.tramite-header h3 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.tramite-titulo h2, .tramite-titulo h3 {
+  margin: 0;
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem;
+}
+
+form label {
+  font-weight: 600;
+  margin-top: 1rem;
+  display: block;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.firma {
+  border: 1px dashed #888;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.sig-canvas {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.firma-buttons {
+  margin-top: 0.5rem;
+}
+
+.firma-buttons button {
+  margin-right: 10px;
+  padding: 0.4rem 0.8rem;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.firma-buttons button:hover {
+  background-color: #374151;
+}
+
+.tramite-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  background-color: #f1f5f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.pagina-fondo {
+  background-color: #000;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
